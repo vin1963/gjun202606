@@ -1,0 +1,12 @@
+select  ofc.officeCode, ofc.city, ofc.addressLine1,
+        emps.employeeNumber,emps.firstName,emps.jobTitle,emps.email
+from classicmodels.offices as ofc
+inner join classicmodels.employees as emps
+on ofc.officeCode=emps.officeCode
+
+
+select emps.employeeNumber,emps.firstName,emps.email,emps.extension,
+  cst.customerNumber,cst.customerName,cst.contactFirstName,cst.phone
+from classicmodels.employees as emps
+inner join classicmodels.customers as cst
+on emps.employeeNumber=cst.salesRepEmployeeNumber
