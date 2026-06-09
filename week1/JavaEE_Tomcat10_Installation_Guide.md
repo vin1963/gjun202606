@@ -131,15 +131,10 @@ set CATALINA_OPTS=-Xms512m -Xmx2g -XX:+UseG1GC
 - 問：啟動時出現 Java 版本錯誤？
   答：確認 `JAVA_HOME` 指向正確 JDK，且 `java -version` 回傳符合 Tomcat 要求的版本。
 
-- 問：應用使用 javax.*，但部署在 Tomcat 11 失敗？
-  答：Tomcat 11 使用 jakarta.*，必須將應用轉換或使用 Tomcat 9。
+- 問：應用使用 javax.*，但部署在 Tomcat 10 失敗？
+  答：Tomcat 10 使用 jakarta.*，必須將應用轉換或使用 Tomcat 9。
 
-## 附錄：建議的生產部署要點
-
-- 使用 HTTPS 與有效的憑證。
-- 將 Tomcat 放在內網並以反向代理（Nginx/HAProxy/Apache）提供對外入口，並進行負載平衡與 TLS 終端。
-- 啟用適當的日誌輪替與監控（Prometheus/JMX Exporter）。
 
 ---
 
-完成：此文件為繁體中文教學版，已更新為以 Tomcat 最新系列（Tomcat 11）為主軸，並提供遷移注意事項與 Windows 實作步驟。如需我把內容整合回 `JavaEE7_Tomcat_Installation_Guide.md` 或產出 PDF / 簡報版本，請告訴我要的格式與範圍。
+完成：已更新為以 Tomcat 最新系列（Tomcat 10）為主軸，並提供遷移注意事項與 Windows 實作步驟。
