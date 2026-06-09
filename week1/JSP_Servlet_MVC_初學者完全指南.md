@@ -323,11 +323,11 @@ student-management/
             <scope>provided</scope>
         </dependency>
         
-        <!-- JSTL (含 API 與實作) -->
+        <!-- JSTL (含 API 與實作) -->         
         <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <version>3.0.1</version>
+         <groupId>jakarta.servlet.jsp.jstl</groupId>
+         <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+         <version>3.0.0</version>
         </dependency>
     </dependencies>
     
