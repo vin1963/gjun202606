@@ -4,9 +4,33 @@ from classicmodels.offices as ofc
 inner join classicmodels.employees as emps
 on ofc.officeCode=emps.officeCode
 
-
 select emps.employeeNumber,emps.firstName,emps.email,emps.extension,
   cst.customerNumber,cst.customerName,cst.contactFirstName,cst.phone
 from classicmodels.employees as emps
 inner join classicmodels.customers as cst
 on emps.employeeNumber=cst.salesRepEmployeeNumber
+order by emps.employeeNumber
+
+select emp1.employeeNumber,emp1.firstName , emp2.employeeNumber,emp2.firstName
+from classicmodels.employees as emp1
+inner join classicmodels.employees as emp2
+on emp1.reportsTo=emp2.employeeNumber
+
+select cst.customerNumber,cst.customerNumber,cst.contactfirstname,cst.phone,
+     ord.orderNumber,ord.orderDate,ord.status
+from classicmodels.customers as cst
+left join classicmodels.orders as ord
+on cst.customernumber=ord.customerNumber
+where ord.orderNumber is null
+
+
+========================================
+
+
+set autocommit=0;
+
+update classicmodels.employees
+set extension='x7900'
+where employeenumber=1002;
+
+rollback;
