@@ -10,7 +10,7 @@ public class Message {
    }
    
    public String says(String name) {
-	   return name+"said:"+greet.get(name);
+	   return name+" said: "+greet.get(name);
    }
    
 }
