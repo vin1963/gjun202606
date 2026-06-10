@@ -34,3 +34,10 @@ set extension='x7900'
 where employeenumber=1002;
 
 rollback;
+
+create view EmployeeBoss
+as
+select emp1.employeeNumber,emp1.firstName , emp2.employeeNumber as BossNo ,emp2.firstName as BossName
+from classicmodels.employees as emp1
+inner join classicmodels.employees as emp2
+on emp1.reportsTo=emp2.employeeNumber
