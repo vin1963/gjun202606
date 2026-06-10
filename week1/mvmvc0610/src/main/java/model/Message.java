@@ -1,4 +1,5 @@
 package model;
+import java.util.*;
 
 public class Message {
    Map<String,String> greet=new HashMap<>();
@@ -11,4 +12,5 @@ public class Message {
    public String says(String name) {
 	   return name+"said:"+greet.get(name);
    }
+   
 }
