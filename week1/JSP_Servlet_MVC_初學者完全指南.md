@@ -276,6 +276,7 @@ student-management/
 │       └── webapp/             (Web 檔案)
 │           ├── WEB-INF/
 │           │   └── web.xml
+│           │   └── /lib/jakarta.servlet.jsp.jstl-3.0.1.jar
 │           ├── css/
 │           │   └── style.css
 │           ├── js/
@@ -284,7 +285,9 @@ student-management/
 │           ├── student-list.jsp
 │           └── add-student.jsp
 ```
-
+```
+注意: 加入 webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-3.0.1.jar
+```
 ### ⚙️ Maven 配置 (pom.xml)
 
 ```xml
