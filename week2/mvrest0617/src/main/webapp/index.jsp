@@ -5,7 +5,7 @@
 <body>
 
 <%
-   response.sendRedirect("api/hello");
+   response.sendRedirect("api/hello/json");
 %>
 <h1>
  
