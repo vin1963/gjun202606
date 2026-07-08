@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
-     <jackson.version>2.16.1</jackson.version>
+     <jackson.version>2.17.0</jackson.version>
     <jersey.version>3.1.6</jersey.version>
   </properties>
 
@@ -79,14 +79,28 @@
         </dependency> 
                 <dependency>
            <groupId>com.fasterxml.jackson.module</groupId>
-           <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
-           <version>2.17.0</version>
+             <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- Java 8+ 日期模組 -->
+        <!-- JAXB annotations introspector (required by jersey-media-json-jackson's embedded JsonMapperConfigurator) -->
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jaxb-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        
+        <!-- Old javax.xml.bind API (required by jackson-module-jaxb-annotations; jakarta.xml.bind-api 4.x uses jakarta.* namespace) -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.16.1</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
       <groupId>org.hibernate.orm</groupId>
