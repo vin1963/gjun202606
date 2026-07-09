@@ -303,24 +303,37 @@ public Response getCoffeesBySupplier(@PathParam("id") int id) {
 #### 7.4 POST /suppliers — 新增供應商
 
 ```java
-@POST
-@Consumes(MediaType.APPLICATION_JSON)
-public Response create(Supplier supplier) {
-    EntityManager em = JpaUtil.getEntityManager();
-    try {
-        em.getTransaction().begin();     // 開始交易
-        em.persist(supplier);            // 新增至資料庫
-        em.getTransaction().commit();    // 提交交易
-        return Response.status(201).build();  // 201 Created
-    } catch (RuntimeException e) {
-        if (em.getTransaction().isActive()) {
-            em.getTransaction().rollback();  // 異常時復原
-        }
-        throw e;                         // 讓 Jersey 處理錯誤回應
-    } finally {
-        em.close();
-    }
-}
+    @POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response create(Supplier supplier) {
+		Supplier sp = SupplierDAO.addSupplier(supplier);
+		if (sp != null)
+			return Response.status(201).build(); // 201 Created
+		else
+			return Response.noContent().build();
+
+	}
+  public static Supplier addSupplier(Supplier supplier) {
+		EntityManager em = JpaUtil.createEntityManager();
+		try {
+			Supplier found=em.find(Supplier.class, supplier.getSupId());
+			if(found==null) {
+	           em.getTransaction().begin();     // 開始交易
+	           em.persist(supplier);            // 新增至資料庫
+	           em.getTransaction().commit();    // 提交交易
+	           return supplier;  
+			}else {
+				return null;
+			}
+	    } catch (RuntimeException e) {
+	        if (em.getTransaction().isActive()) {
+	            em.getTransaction().rollback();  // 異常時復原
+	        }
+	        throw e;                         // 讓 Jersey 處理錯誤回應
+	    } finally {
+	        em.close();
+	    }
+	}
 ```
 
 **說明**：
