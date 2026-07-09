@@ -59,12 +59,30 @@ jparsonemany/
 - **mysql-connector-j** (9.2.0) — MySQL JDBC 驅動
 
 ```xml
-<!-- 關鍵：jersey-media-json-jackson 讓 REST API 自動處理 JSON -->
-<dependency>
-    <groupId>org.glassfish.jersey.media</groupId>
-    <artifactId>jersey-media-json-jackson</artifactId>
-    <version>${jersey.version}</version>
-</dependency>
+ <dependency>
+           <groupId>com.fasterxml.jackson.module</groupId>
+             <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
+            <version>2.17.0</version>
+        </dependency>
+              
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jaxb-annotations</artifactId>
+            <version>2.17.0</version>
+        </dependency>
+        
+        <!-- Old javax.xml.bind API (required by jackson-module-jaxb-annotations; jakarta.xml.bind-api 4.x uses jakarta.* namespace) -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.17.0</version>
+        </dependency>
+        
 ```
 
 `packaging` 為 `war`，表示部署到 Tomcat 這類 Servlet 容器。
