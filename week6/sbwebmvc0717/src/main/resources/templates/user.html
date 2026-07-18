@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>User stat</title>
+</head>
+<body>
+<table width="60%" border="1">
+    <tr th:each="user, stat : ${users}">
+        <td th:text="${stat.count}">1</td>
+        <td th:text="${stat.index}">0</td>
+        <td th:text="${user.name}">姓名</td>
+        <td th:text="${user.email}">Email</td>
+        <td th:text="${stat.first}">是否第一筆</td>
+        <td th:text="${stat.last}">是否最後一筆</td>
+    </tr>
+</table>
+</body>
+</html>
