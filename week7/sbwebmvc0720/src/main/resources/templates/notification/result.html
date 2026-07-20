@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>通知結果</title>
+    <style>
+        .result-box { 
+            border: 2px solid #28a745; 
+            padding: 20px; 
+            border-radius: 8px; 
+            background: #d4edda;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>通知發送結果</h1>
+        
+        <div class="result-box">
+            <h2 th:text="${type} + '發送成功'">發送成功</h2>
+            <p th:text="${result}">結果訊息</p>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a th:href="@{/web/notification/email}">發送電子郵件</a> |
+            <a th:href="@{/web/notification/sms}">發送簡訊</a> |
+            <a th:href="@{/web/}">返回首頁</a>
+        </div>
+    </div>
+</body>
+</html>

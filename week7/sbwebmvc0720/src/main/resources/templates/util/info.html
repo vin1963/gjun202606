@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">工具資訊</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .info-box { 
+            border: 1px solid #17a2b8; 
+            padding: 20px; 
+            border-radius: 8px; 
+            background: #d1ecf1;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${title}">工具資訊</h1>
+        
+        <div class="info-box">
+            <p th:if="${currentTime}" th:text="'目前時間：' + ${currentTime}">時間</p>
+            <p th:if="${uuid}" th:text="'UUID：' + ${uuid}">UUID</p>
+            <p th:if="${appInfo}" th:text="'應用資訊：' + ${appInfo}">資訊</p>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a th:href="@{/web/util/time}">取得時間</a> |
+            <a th:href="@{/web/util/uuid}">產生 UUID</a> |
+            <a th:href="@{/web/util/info}">應用資訊</a> |
+            <a th:href="@{/web/}">返回首頁</a>
+        </div>
+    </div>
+</body>
+</html>
