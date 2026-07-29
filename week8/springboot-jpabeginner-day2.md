@@ -265,6 +265,24 @@ public class EmployeeService {
             PageRequest.of(page, size, Sort.by(sortBy).ascending())
         );
     }
+   // 因為原程式為提供 Service update create 方法故新增
+   public Optional<Employee> update(Long id, Employee updated) {
+    	    Optional<Employee> existingOpt = employeeRepository.findById(id);
+		if (existingOpt.isPresent()) {
+			Employee existing = existingOpt.get();
+			existing.setName(updated.getName());
+			existing.setEmail(updated.getEmail());
+			existing.setDepartment(updated.getDepartment());
+			existing.setSalary(updated.getSalary());
+			return Optional.of(employeeRepository.save(existing));
+		} else {
+			return Optional.empty(); // 或者拋出例外
+		}
+    }
+    public Employee create(Employee emp) {
+    	    Employee e1=new Employee(emp.getName(), emp.getEmail(), emp.getDepartment(), emp.getSalary());
+		return employeeRepository.save(e1);
+	}
 }
 ```
 
