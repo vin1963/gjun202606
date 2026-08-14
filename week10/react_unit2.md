@@ -83,6 +83,7 @@ function App() {
     </div>
   );
 }
+export default App;
 ```
 
 預期輸出：
