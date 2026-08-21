@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的時間</title>    
+</head>
+<body>
+<span id="time"></span>
+<button onclick="startTime()">開始</button>
+<button onclick="stopTime()">停止</button>
+<script>
+var intervalId;
+const startTime = () => {
+    intervalId = setInterval(() => {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        let timeElement = document.getElementById('time');
+        timeElement.innerHTML = `<h2 style="color: blue;">${timeString}</h2>`;
+    }, 1000);
+};
+const stopTime = () => {
+    clearInterval(intervalId);
+};
+</script>
+</body>
+</html>
